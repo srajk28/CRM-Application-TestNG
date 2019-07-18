@@ -1,0 +1,47 @@
+package testscript;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Keywords 
+{
+	WebDriver driver;
+	FileInputStream file;
+	Properties prop;
+
+	public void openbrowser() throws Exception
+	{
+		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		file = new FileInputStream("D:\\JavaClass\\CRMFrameTestNG\\src\\objectrepository\\objectrepository.properties");
+		prop = new Properties();
+		prop.load(file);
+	}
+	public void navigate(String data)
+	{
+		driver.get(data);
+	}
+	public void input(String data, String objectname)
+	{
+		driver.findElement(By.xpath(prop.getProperty(objectname))).sendKeys(data);
+	}
+	public void click(String objectname)
+	{
+		driver.findElement(By.xpath(prop.getProperty(objectname))).click();
+	}
+	public void tap(String objectname)
+	{
+		driver.findElement(By.xpath(prop.getProperty(objectname))).click();
+		Alert alert = driver.switchTo().alert();
+		String msg = alert.getText();
+		System.out.println("Alert :"+msg);
+		alert.accept();
+	}
+}
