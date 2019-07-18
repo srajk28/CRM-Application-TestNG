@@ -1,0 +1,8 @@
+username = //input[@id='username']
+password = //input[@class='textField pwdfield']
+signin = //a[@id='loginButton']
+link = //*[text()='New']
+firstname = //*[@id='createTasksPopup_createTasksTableContainer']/table/tbody/tr[1]/td[1]/input
+lastname = //*[@id='createTasksPopup_createTasksTableContainer']/table/tbody/tr[2]/td[1]/input
+cancel = //*[@id='createTasksPopup_cancelBtn']
+logout = //*[@id='logoutLink']
